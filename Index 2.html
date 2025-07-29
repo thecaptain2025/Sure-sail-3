@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Sure Sail</title>
+<link href="style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+#result {
+    padding: 1em;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+.verdant-sail {
+    background-color: #28a745;
+    color: white;
+}
+.weathered-mast {
+    background-color: #ffc107;
+    color: black;
+}
+.false-hull {
+    background-color: #dc3545;
+    color: white;
+}
+.conch-cursed {
+    background-color: #343a40;
+    color: white;
+}
+</style></head>
+<body>
+<header>
+<h1>⚓ Sure Sail – Project Integrity Evaluation</h1>
+<nav>
+<a href="#">Home</a> | 
+      <a href="#">What Is Sure Sail?</a> | 
+      <a href="#">Report</a>
+</nav>
+</header>
+<div class="container">
+<section class="project-form">
+<h2>Project Submission</h2>
+<input id="project-name" placeholder="Project Name" type="text"/>
+<input id="project-address" placeholder="Token Ticker / Contract Address" type="text"/>
+<input id="project-site" placeholder="Website / GitHub / Whitepaper" type="text"/>
+<textarea id="project-notes" placeholder="Notes / Observations"></textarea>
+</section>
+
+<section class="scan-input">
+  <h2>Sure Sail Scan</h2>
+  <label for="tokenInput">Enter Token Ticker or Contract Address:</label><br>
+  <input type="text" id="tokenInput" placeholder="e.g. PUMP or 9BB6...">
+  <button onclick="runSureSailScan()">Run Scan</button>
+  <div id="scanStatus" style="margin-top: 10px;"></div>
+</section>
+<section class="scoring">
+<h2>Scoring Categories (0–10)</h2>
+<div class="score-card">1. ✅ Verified Code <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">2. 💰 Honest Tokenomics <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">3. 🔒 Liquidity Integrity <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">4. 🔁 Permissionless Design <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">5. 🧬 Chain Interoperability <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">6. 🧍 Transparent Team <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">7. 📍 Roadmap Alignment <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">8. 🧊 DAO / Governance <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">9. 📣 Communication <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">10. 🌍 Real-World Claims <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">1. Verified Code <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">2. Honest Tokenomics <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">3. Liquidity Lock/Burn <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">4. Permissionless Design <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">5. Chain Interoperability <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">6. Transparent Team <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">7. Roadmap Alignment <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">8. Governance <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">9. Communication <input class="score" max="10" min="0" type="range" value="0"/></div>
+<div class="score-card">10. Real-World Integrity <input class="score" max="10" min="0" type="range" value="0"/></div>
+</section>
+<section class="results">
+<button onclick="calculateScore()">Submit for Score</button>
+<div id="score-output">Your score will appear here.</div>
+</section>
+</div>
+<footer>
+<p>© 2025 Sure Sail Tool. Powered by the Captain’s Doctrine.</p>
+</footer>
+<script src="script.js"></script>
+<script>
+function calculateScore() {
+    const criteriaIds = [
+        "verifiedCode", "honestTokenomics", "liquidityIntegrity", "permissionlessDesign",
+        "chainInteroperability", "transparentTeam", "roadmapAlignment", "daoGovernance",
+        "communication", "realWorldClaims"
+    ];
+
+    let score = 0;
+    for (let id of criteriaIds) {
+        const checkbox = document.getElementById(id);
+        if (checkbox && checkbox.checked) {
+            score += 10;
+        }
+    }
+
+    let tier = "";
+    if (score >= 90) {
+        tier = "🟩 Verdant Sail (90–100)";
+    } else if (score >= 60) {
+        tier = "🟨 Weathered Mast (60–89)";
+    } else if (score >= 30) {
+        tier = "🟥 False Hull (30–59)";
+    } else {
+        tier = "⚫ Conch-Cursed (0–29)";
+    }
+
+    document.getElementById("result").innerHTML =
+        "<strong>Total Score:</strong> " + score + "/100<br><strong>Final Tier:</strong> " + tier;
+}
+</script>
+
+<script>
+function calculateScore() {
+    const criteriaIds = [
+        "verifiedCode", "honestTokenomics", "liquidityIntegrity", "permissionlessDesign",
+        "chainInteroperability", "transparentTeam", "roadmapAlignment", "daoGovernance",
+        "communication", "realWorldClaims"
+    ];
+
+    let score = 0;
+    for (let id of criteriaIds) {
+        const checkbox = document.getElementById(id);
+        if (checkbox && checkbox.checked) {
+            score += 10;
+        }
+    }
+
+    let tier = "";
+    let tierClass = "";
+    if (score >= 90) {
+        tier = "🟩 Verdant Sail (90–100)";
+        tierClass = "verdant-sail";
+    } else if (score >= 60) {
+        tier = "🟨 Weathered Mast (60–89)";
+        tierClass = "weathered-mast";
+    } else if (score >= 30) {
+        tier = "🟥 False Hull (30–59)";
+        tierClass = "false-hull";
+    } else {
+        tier = "⚫ Conch-Cursed (0–29)";
+        tierClass = "conch-cursed";
+    }
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.className = "tier-result " + tierClass;
+    resultDiv.innerHTML = "<strong>Total Score:</strong> " + score + "/100<br><strong>Final Tier:</strong> " + tier;
+}
+</script>
+
+
+<script>
+async function runSureSailScan() {
+  const token = document.getElementById("tokenInput").value;
+  const statusDiv = document.getElementById("scanStatus");
+  statusDiv.innerHTML = "⛵ Scanning token... please wait.";
+
+  try {
+    const response = await fetch(`http://localhost:3000/scan?ticker=${token}`);
+    const data = await response.json();
+
+    // Simulated mapping (for example) — map the returned values into checkboxes
+    const ids = {
+      verifiedCode: data.verifiedCode,
+      honestTokenomics: data.honestTokenomics,
+      liquidityIntegrity: data.liquidityIntegrity,
+      permissionlessDesign: data.permissionlessDesign,
+      chainInteroperability: data.chainInteroperability,
+      transparentTeam: data.transparentTeam,
+      roadmapAlignment: data.roadmapAlignment,
+      daoGovernance: data.daoGovernance,
+      communication: data.communication,
+      realWorldClaims: data.realWorldClaims
+    };
+
+    for (let id in ids) {
+      const el = document.getElementById(id);
+      if (el) el.checked = ids[id];
+    }
+
+    statusDiv.innerHTML = "✅ Scan complete.";
+    calculateScore();
+
+  } catch (error) {
+    statusDiv.innerHTML = "❌ Failed to fetch scan data.";
+    console.error("Scan error:", error);
+  }
+}
+</script>
+
+</body>
+</html>
+<br/>
+<button onclick="calculateScore()">Calculate Score</button>
+<div class="tier-result" id="result" style="margin-top:10px; font-size:1.2em;"></div>
